@@ -1,0 +1,20 @@
+PUT /vehicles/_doc/123
+{
+  "make":"Honda",
+  "color":"Black",
+  "price":1000
+}
+
+GET /vehicles/_doc/123
+
+GET /vehicles/_doc/124
+
+GET /vehicles/_doc/123/_source
+
+HEAD /vehicles/_doc/123
+
+DELETE /vehicles/_doc/123
+
+GET /vehicles
+
+DELETE /vehicles
