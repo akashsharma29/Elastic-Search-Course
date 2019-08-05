@@ -1,0 +1,72 @@
+GET /vehicles/_search
+{
+  "query":{
+    "match_all":{}
+  },
+  
+  "sort":[
+      {
+        "price":{"order" : "desc"}
+      }
+    ]
+}
+
+GET /vehicles/_count
+{
+  "query":
+  {
+    "match":
+    {
+      "make":"bmw"
+    }
+  }
+}
+
+GET /vehicles/_search
+{
+  "aggs":
+  {
+    "popular_cars": 
+    {
+      "terms": {"field":"make.keyword"}
+    },
+    
+    "aggs": 
+    {
+      "stats":
+      {
+        "field": "price"
+      }
+    }
+    
+  }
+}
+
+
+GET /vehicles/cars/_search
+{
+  "aggs":
+  {
+    "aggs_condition":
+    {
+      "field": "condition.keyword"
+    }
+  }
+}
+
+GET /vehicles/_search
+{
+  "aggs":
+  {
+    "aggs_condition": 
+    {
+      "terms": {"field":"condition.keyword"}
+    },
+    
+    "aggs": {
+      "avg_price": {
+        "avg": {"field": "price"}
+      }
+    }
+  }
+}
